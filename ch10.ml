@@ -47,7 +47,13 @@ let rec evaluate e =
        | Subtract (e,e') -> evaluate e - evaluate e'
        | Multiply (e,e') -> evaluate e * evaluate e'
        | Divide (e,e') -> evaluate e / evaluate e'
-       | Power (e, e') -> power (evaluate e) (evaluate e')
+       | Power (e, e') ->
+           let v_e = evaluate e in
+           let v_e' = evaluate e' in 
+           if v_e' = 0
+             then 1
+             else v_e * evaluate (Power(Num v_e, Num (v_e' - 1)))
+             
 
 (*7*)
 (*copy option type from chapter*)
