@@ -6,8 +6,8 @@
 let print_list l =
    let rec go = function 
      | [] -> ()
-     | h::m::t -> print_int h; print_string "; "; print_int m; print_string "; "; go t
-     | h::t -> print_int h; go t
+     | [i] -> print_int i
+     | h::t -> print_int h; print_string "; "; go t
    in
    print_string "["; go l; print_string "]"
 
